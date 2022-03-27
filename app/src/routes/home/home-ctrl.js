@@ -2,7 +2,7 @@
 
 const users = {
     id: ['smartmon','hello2166','honkvvv'],
-    psword: ['1212','0202','2121'],
+    psword: ['n1234','61234','v1234'],
 }
 
 const output = {

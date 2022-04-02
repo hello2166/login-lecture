@@ -1,9 +1,5 @@
 
-
-const users = {
-    id: ['smartmon','hello2166','honkvvv'],
-    psword: ['n1234','61234','v1234'],
-}
+const UserStorage = require('../../models/UserStorage');
 
 const output = {
     home: (req, res) => {
@@ -18,19 +14,22 @@ const process = {
     login: (req, res) => {
         const   id = req.body.id,
                 psword = req.body.psword;
+
+        // console.log(UserStorage.getUsers('id','psword'));
+        const users = UserStorage.getUsers('id','psword');
+
+        const response = {};
         if (users.id.includes(id)) {
             const idx = users.id.indexOf(id);
             if (users.psword[idx] === psword) {
-                return res.json({
-                    success: true,
-                    msg: '로그인 성공',
-                })
+                response.success = true;
+                return res.json(response);
             }
         }
-        return res.json({
-            success: false,
-            msg: '로그인 실퍠',
-        })
+
+        response.success = false;
+        response.msg = '로그인 실퍠'
+        return res.json(response)
     },
 }
 

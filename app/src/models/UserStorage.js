@@ -28,6 +28,14 @@ class UserStorage {
 
         return userInfo;
     }
+
+    static saveUser(userInfo) {
+        this.#users.id.push(userInfo.id);
+        this.#users.psword.push(userInfo.psword);
+        this.#users.name.push(userInfo.name);
+
+        console.log('유저추가', this.#users);
+    }
 }
 
 module.exports = UserStorage;
